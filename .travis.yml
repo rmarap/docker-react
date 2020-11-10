@@ -7,3 +7,16 @@ before_install:
 
 script:
     - docker run -e CI=true rmar/docker-react npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "react-create"
+    env: "ReactCreate-env"
+    bucket_name: "elasticbeanstalk-us-east-1-978263999637"
+    bucket_path: "react-create"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: "$AWS_SECRET_KEY"
