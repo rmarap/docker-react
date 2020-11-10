@@ -1,0 +1,9 @@
+FROM node:current-alpine3.10
+WORKDIR /app
+COPY package.json .
+RUN npm install react-scripts@latest
+
+COPY ./ ./
+
+
+CMD [ "npm", "run", "start" ]
